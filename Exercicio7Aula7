@@ -1,0 +1,31 @@
+"Faça um programa que leia uma matriz 6x3 com
+números reais, calcule e mostre: (a) o maior elemento da matriz e sua respectiva posição (linha e coluna); (b) o
+menor elemento da matriz e sua respectiva posição."
+
+tam1 = 6
+tam2 = 3
+mat = []
+for i in range(tam1):
+    linha = []
+    for j in range(tam2):
+        linha.append(float(input(f"Entre com mat[{i}][{j}]")))
+    mat.append(linha)
+maior = mat[0][0]
+menor = mat[0][0]
+for i in range(tam1):
+    for j in range(tam2):
+        if mat[i][j]>maior:
+            maior = mat[i][j]
+        if mat[i][j]<menor:
+            menor = mat[i][j]
+print(f"Maior={maior} e menor={menor}")
+print("Posições de maior valor na lista:\n")
+for i in range(tam1):
+    for j in range(tam2):
+        if maior == mat[i][j]:
+            print(f'[{i}][{j}]\n')
+print("posições de menor da lista:\n")
+for i in range(tam1):
+    for j in range(tam2):
+        if menor == mat[i][j]:
+            print(f'[{i}][{j}]')
