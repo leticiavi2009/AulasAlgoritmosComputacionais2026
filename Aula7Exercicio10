@@ -1,0 +1,28 @@
+10. Um quadrado mágico, é uma matriz quadrada, cuja a soma de cadalinha, coluna ou diagonal é a mesma. 
+Faça um programa que leiauma matriz 50x50, e diga se essa matriz é um quadrado mágico.Exemplo de um quadrado mágico 4x4. A soma de qualquer linha,coluna ou diagonal da sempre 34.
+
+tam = 50
+mat = []
+for i in range(tam):
+    linha = []
+    for j in range(tam):
+        linha.append(int(input(f'A[{i}][{j}]: ')))
+    mat.append(linha)
+somaL=[0]*tam
+somaC=[0]*tam
+sdp = 0
+sds = 0
+for i in range(tam):
+    somaL[i] = sum(mat[i])
+    sdp+=mat[i][i]
+    sds+=mat[i][tam-1-i]
+    for j in range(tam):
+        somaC[i]+=mat[j][i]
+cont = 0
+for i in range(tam):
+    if sdp == sds and sdp ==somaL[i] and sdp == somaC[i]:
+        cont+=1
+if cont == tam:
+    print('Quadrado mágico')
+else:
+    print('Não é um quadrado mágico')
