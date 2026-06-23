@@ -1,0 +1,25 @@
+Faça um programa que lê duas notas para cada aluno de duas turmas. Cada turma tem 3 alunos. Armazene os dados em uma matriz M. Cada aluno deve ter três notas (as duas digitadas e a média dessas duas).
+Calcule a média de cada turma e armazene em um vetor TURMA. Informe qual
+turma tem maior média, e quais alunos tiveram média
+maior que a média de sua turma.
+
+tam = 3
+mat = []
+for i in range(tam):
+    linha = []
+    for j in range(tam):
+        linha.append(float(input(f"Entre com mat[{i}][{j}]: ")))
+    mat.append(linha)
+maiorl = mat[0][:] #pega os valores direitinho
+soma = 0
+for i in range(tam):
+        soma += maiorl[i]
+for i in range(tam):
+    aux = 0
+    for j in range(tam):
+        aux += mat[i][j]
+    if aux > soma:
+            soma = aux
+            maiorl = mat[i][:]#linha toda completa
+    print(f'maior linha = {maiorl} e soma da maior linha = {soma}')
+    
