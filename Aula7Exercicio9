@@ -1,0 +1,24 @@
+Faça um programa que leia uma matriz 50x50, e imprima o númerode linhas e o número de colunas nulas da matriz. 
+tam = 50
+mat = []
+for i in range(tam):
+    linha = []
+    for j in range(tam):
+        linha.append(int(input(f'A[{i}][{j}]: ')))
+    mat.append(linha)
+contL=0
+contC=0
+for i in range(tam):
+    contZerolinha = 0
+    contZeroColuna = 0
+    for j in range(tam):
+        if mat[i][j] == 0:
+            contZerolinha+=1
+        if mat[j][i] == 0:
+            contZeroColuna+=1
+    if contZerolinha == tam:
+        contL += 1
+    if contZeroColuna == tam:
+        contC+=1
+print(f'{contL} linhas nulas')
+print(f'{contC} colunas nulas')
