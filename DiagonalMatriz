@@ -1,0 +1,18 @@
+Faça um programa que leia uma matriz 3x3 e multiplique os 
+elementos da diagonal principal da matriz por um número k. 
+Imprima a matriz na tela antes e depois da multiplicação.
+matriz = []
+for i in range(3):
+    linha = []
+    for j in range(3):
+        valor = int(input("Digite um número"))
+        linha.append(valor)
+    matriz.append(linha)
+k = int(input("Dê um valor para k"))
+for i in range(3):
+    diagonal = []
+    for j in range(3):
+        diagonal.append(matriz[j][j]*k)     #a diagonal de uma matriz tem a linha e a coluna iguais
+        
+    print(matriz[i])
+print(diagonal)
