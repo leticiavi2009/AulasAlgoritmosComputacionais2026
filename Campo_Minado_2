@@ -1,0 +1,118 @@
+from random import randint
+row = int(input('Informe o número de linhas: '))
+col = int(input('Informe o número de colunas: '))
+dense = int(input('Informe a probabilidade de minas (inteiro de 0 a 100): '))
+campo = []
+mine = 0
+bomb = False
+for i in range(row):
+    linha = []
+    for j in range(col):
+        mina = randint(1,100)
+        if mina <= dense:
+            linha.append('*')
+            mine += 1
+        else:
+            linha.append('.')
+    campo.append(linha)
+for i in campo:
+    print(i)
+for i in range(row):
+    for j in range(col):
+        cont = 0
+        if campo[i][j] == '.':
+            if i != 0:
+                if campo[i-1][j] == '*':
+                    cont += 1
+            if i != 0 and j != col-1:
+                if campo[i-1][j+1] == '*':
+                    cont += 1
+            if j != col-1:
+                if campo[i][j+1] == '*':
+                    cont += 1
+            if i != row-1 and j != col-1:
+                if campo[i+1][j+1] == '*':
+                    cont += 1
+            if i != row-1:
+                if campo[i+1][j] == '*':
+                    cont += 1
+            if i != row-1 and j != 0:
+                if campo[i+1][j-1] == '*':
+                    cont += 1
+            if j != 0:
+                if campo[i][j-1] == '*':
+                    cont += 1
+            if i != 0 and j != 0:
+                if campo[i-1][j-1] == '*':
+                    cont += 1
+            campo[i][j] = str(cont)
+for i in campo:
+    for j in range(len(i)):
+        if j != len(i)-1:
+            print(i[j],end = ' ')
+        else:
+            print(i[j],end = '\n')
+jogo = []
+for i in range(row):
+    linha = []
+    for j in range(col):
+        linha.append('#')
+    jogo.append(linha)
+cont = -1
+while not bomb and not mine == cont:
+    for i in jogo:
+        for j in range(len(i)):
+            if j != len(i)-1:
+                print(i[j],end = ' ')
+            else:
+                print(i[j],end = '\n')
+    i,j = input('Informe linha e coluna da jogada: ').split()
+    i = int(i)-1
+    j = int(j)-1
+    if i < 0 or i > row-1 or j < 0 or j > col-1:
+        print('Posição inválida')
+    elif jogo[i][j] == campo[i][j]:
+        print(f'Posição ({i+1},{j+1}) já revelada')
+    else:
+        jogo[i][j] = campo[i][j]
+        if jogo[i][j] == '*':
+            bomb = True
+        for k in range(row*col):
+            for i in range(row):
+                for j in range(col):
+                    if jogo[i][j] == '0':
+                        if i != 0:
+                            jogo[i-1][j] = campo[i-1][j]
+                        if i != 0 and j != col-1:
+                            jogo[i-1][j+1] = campo[i-1][j+1]
+                        if j != col-1:
+                            jogo[i][j+1] = campo[i][j+1]
+                        if i != row-1 and j != col-1:
+                            jogo[i+1][j+1] = campo[i+1][j+1]
+                        if i != row-1:
+                            jogo[i+1][j] = campo[i+1][j]
+                        if i != row-1 and j != 0:
+                            jogo[i+1][j-1] = campo[i+1][j-1]
+                        if j != 0:
+                            jogo[i][j-1] = campo[i][j-1]
+                        if i != 0 and j != 0:
+                            jogo[i-1][j-1] = campo[i-1][j-1]
+    cont = 0
+    for i in jogo:
+        for j in i:
+            if j == '#':
+                cont += 1
+for i in range(row):
+    for j in range(col):
+        if campo[i][j] == '*':
+            jogo[i][j] = campo[i][j]
+if bomb:
+    print('Você perdeu!')
+else:
+    print('Você venceu!')
+for i in jogo:
+    for j in range(len(i)):
+        if j != len(i)-1:
+            print(i[j],end = ' ')
+        else:
+            print(i[j],end = '\n')
