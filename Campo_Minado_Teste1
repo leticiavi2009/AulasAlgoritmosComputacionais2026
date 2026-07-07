@@ -1,6 +1,36 @@
 """
-
-
+'''
+Questão 1
+Implemente uma versão simplicaficada do jogo Campo Minado. Um tabuleiro é representado por uma matriz na qual "*" representa uma bomba;
+"," representa uma célula vazia.
+Exemplo de entrada:
+    tabuleiro = [ #aleatório pfvr
+        [".","*",".",".",".","*"]
+        [".","*",".",".",".","*"]
+        [".","*",".",".",".","*"]
+        [".","*",".",".",".","*"]
+        [".","*",".",".",".","*"]
+        ]
+    Seu programa deve:
+        Gerar de forma aleatória as bombas de tabuleiro. Percorrer todas as posições do tabuleiro. 
+        Para cada célula que não contém uma bomba, contar quantas bombas existem nas 8 posições vizinhas.
+    (horizontal,vertical e diagonal)
+    Substituir "," pelo número correspondente de bombas vizinhas.
+    Manter as bombas representadas por "*". Exibir o tabuleiro resultante de forma organizada
+    
+    REGRAS:
+        O algoritmo deve funcionar para qualquer matriz de dimensões N x M
+        Não é permitido acessar posições fora dos limites da matriz.
+        Exemplo de saída 
+        Para a entrada acima, uma saída possível
+        é:
+            0 1 * 2 1
+            1 2 1 2 *
+            * 2 1 2 *
+            1 2 * 1 0
+            0 1 1 1 0
+'''
+''-------------------------------------------------''
 from random import randint
 row = int(input('Informe o número de linhas: '))
 col = int(input('Informe o número de colunas: '))
