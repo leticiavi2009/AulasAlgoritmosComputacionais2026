@@ -1,0 +1,29 @@
+'''
+d= {'nome':'Leticia', 'idade': '17','telefone': '12345678','endereco': 'est45 '}
+print(d['nome'])
+print(d)
+
+ou para pedir para o usuario digitar:
+    d['nome'] = input('Entre com nome: ')
+    d['idade'] = int(input(('Age'))
+    d['telefone'] = input('Telefono: ')
+    d['endereco'] = input('enderech')
+    print(d[nome])
+    print(d)
+'''
+agenda = {}
+cpf = input()
+while cpf != 0:
+    nome = input('Entre com o nome: ')
+    idade = int(input('Entre com a idade'))
+    telefone = input('Entre com telefone')
+    agenda[cpf] = {'nome':nome,'idade':idade, 'telefone': telefone }
+    cpf = input()
+for chave, dados in agenda.items:
+    print(f'{chave}:{dados['nome']}-{dados['idade']}-{dados['telefone']}')
+
+'''
+or
+for dados in agenda.items:
+    print(f'{dados[0]}:{dados[1]['nome']} - {dados[1]['telefone']} - {dados[1]['idade']}
+'''
