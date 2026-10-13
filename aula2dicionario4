@@ -1,0 +1,17 @@
+dicionario = {}
+backup = {}
+cpf = int(input('Digite seu cpf: '))
+
+while cpf != 0:
+    a1 = input()
+    a2 = input()
+    a3 = input()
+    dicionario[cpf] = {'a1': a1, 'a2':a2, 'a3':a3}
+    
+    if len(dicionario) == 2:
+        for i in dicionario.items():
+            print(f'{i[0]}, {i[1]['a1']}, {i[1]['a2']}, {i[1]['a3']}')
+            backup.update(dicionario) #o que tinha no dicionario, é jogado para o backup
+    
+        dicionario.clear()
+    cpf = int(input('Digite seu cpf: '))
