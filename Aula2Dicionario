@@ -1,0 +1,39 @@
+#Questão3
+
+agenda = {}
+nome = input('Entre com um nome: ') # ele pede primeiro o nome
+while nome != 'fim': # faz o nome parar se o usuário digitar fim
+    cpf = input('Entre com cpf: ') # coloca o valor de cpf
+    idade = int(input('Entre com idade: ')) #insere o valor de idade
+    agenda[cpf] = {'nome': nome, 'idade':idade} #faz cpf ser a chave primaria do bagui que insere os dados mais basicos mediane a POSIÇÃO CPF
+    nome = input('Entre com o nome: ') #SÓ por ÚLTIMO que é digitado o nome, daí nao tem como inserir no dicionário o 'fim'. Na primeira vez, pega o nome de fora do dicionário
+    
+    
+#agenda.items pega cada item de agenda e faz i percorrer cada um deles
+#i[0] = cpf
+#i[1] = {nome,idade}
+
+print('DICIONÁRIO COM TODOS')
+print('cpf \t\t\t nome \t\t\t idade')
+
+alunosMaiores = {}
+alunosMenores = {}
+for i in agenda.items():
+    print(f'{i[0]} \t\t {i[1]['nome']} \t\t\t {i[1]['idade']}')
+    if i[1]['idade'] >= 18:
+        alunosMaiores[i[0]] = i[1]
+    elif i[1]['idade'] <18:
+        alunosMenores[i[0]] = i[1]
+        
+agenda.clear()
+        
+'''
+se eu quiser apagar um por um e adicionar so em outro os menores de idade
+del agenda[i[0]]
+alunos.menores[i[0]] = i[1]
+'''
+print("\n\n\n========SÓ OS VEIOS DE MAIOR========")
+for i in alunosMenores.items():
+    
+    print(f'{i[0]} \t\t {i[1]['nome']} \t\t\t {i[1]['idade']}')
+    
